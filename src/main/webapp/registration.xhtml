@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:bal="http://bal/facelets">
+
+<h:body>
+    <h1>Sign up</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> login : </td>
+                <td> <h:inputText value="#{registrationBean.login}"/> </td>
+            </tr>
+            <tr>
+                <td> password : </td>
+                <td> <h:inputText value="#{registrationBean.password}"/> </td>
+            </tr>
+            <tr>
+                <td> name : </td>
+                <td> <h:inputText value="#{registrationBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> surname : </td>
+                <td> <h:inputText value="#{registrationBean.surname}"/> </td>
+            </tr>
+            <tr>
+                <td> card : </td>
+                <td> <h:inputText value="#{registrationBean.card}"/> </td>
+            </tr>
+            <tr>
+                <td> address : </td>
+                <td> <h:inputText value="#{registrationBean.address}"/> </td>
+            </tr>
+
+        </table>
+
+        <br />
+        <br />
+        <h:commandButton value="Done!" action="#{registrationBean.doRegistration}"/>
+
+        <br />
+        <br />
+        <h:link value="Cancel" outcome="login" />
+    </h:form>
+</h:body>
+</html>

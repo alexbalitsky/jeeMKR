@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update car owner</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Name : </td>
+                <td> <h:inputText value="#{updateCarOwnerBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> Surname : </td>
+                <td> <h:inputText value="#{updateCarOwnerBean.surname}"/> </td>
+            </tr>
+            <tr>
+                <td> Address : </td>
+                <td> <h:inputText value="#{updateCarOwnerBean.address}"/> </td>
+            </tr>
+            <tr>
+                <td> User Name : </td>
+                <td> <h:inputText value="#{updateCarOwnerBean.userName}"/> </td>
+            </tr>
+            <tr>
+                <td> Password : </td>
+                <td> <h:inputText value="#{updateCarOwnerBean.password}"/> </td>
+            </tr>
+        </table>
+
+        <h1>Choose the cars that will be added to car owner</h1>
+
+        <h:selectManyListbox value="#{updateCarOwnerBean.ownerCars}">
+            <f:selectItems value="#{updateCarOwnerBean.cars}" var="catalog" itemLabel="#{catalog.brand} | #{catalog.number} | #{catalog.colour} | #{catalog.price}" itemValue="#{catalog.catalogId}"/>
+        </h:selectManyListbox>
+        <br />
+        <h:commandButton value="Update" action="#{updateCarOwnerBean.update}"/>
+        <h:link value="Cancel" outcome="getCarOwners" />
+    </h:form>
+
+</h:body>
+</html>

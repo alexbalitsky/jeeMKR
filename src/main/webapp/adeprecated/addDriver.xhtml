@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Add driver</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Name : </td>
+                <td> <h:inputText value="#{addDriverBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> Surname : </td>
+                <td> <h:inputText value="#{addDriverBean.surname}"/> </td>
+            </tr>
+            <tr>
+                <td> Salary : </td>
+                <td> <h:inputText value="#{addDriverBean.salary}"/> </td>
+            </tr>
+
+        </table>
+
+        <br/>
+        <h3>Add Cars</h3>
+        <h:selectManyListbox value="#{addDriverBean.carsOfDriver}">
+            <f:selectItems value="#{addDriverBean.cars}" var="driver" itemLabel="#{driver.brand} | #{driver.number} | #{driver.colour} | #{driver.price}" itemValue="#{driver.catalogId}"/>
+        </h:selectManyListbox>
+
+        <br />
+        <br />
+        <h:commandButton value="Save" action="#{addDriverBean.save}"/>
+
+        <br />
+        <br />
+        <h:link value="Cancel" outcome="index" />
+    </h:form>
+</h:body>
+</html>

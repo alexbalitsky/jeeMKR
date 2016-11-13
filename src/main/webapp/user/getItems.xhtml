@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Items</h1>
+    <h:form>
+        <h:dataTable value="#{getItemBean.items}" var="item" border="1">
+            <h:column>Name : #{item.name}</h:column>
+            <h:column>Price : #{item.price}</h:column>
+            <h:column>Count : #{item.count}</h:column>
+            <h:column>
+                add to cart <h:selectBooleanCheckbox value="#{cartBean.checked[item.id]}" />
+            </h:column>
+        </h:dataTable>
+        <br/>
+        <br/>
+        <h:commandButton value="Take your goods!" type="submit" action="#{cartBean.buy}"/>
+
+        <br/>
+        <br/>
+        <h:link value="Go to main page" outcome="getCatalogs"/>
+
+        <br />
+        <br />
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
+</h:body>
+</html>

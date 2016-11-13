@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update car</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Brand : </td>
+                <td> <h:inputText value="#{updateCarBean.brand}"/> </td>
+            </tr>
+            <tr>
+                <td> Number : </td>
+                <td> <h:inputText value="#{updateCarBean.number}"/> </td>
+            </tr>
+            <tr>
+                <td> Colour : </td>
+                <td> <h:inputText value="#{updateCarBean.colour}"/> </td>
+            </tr>
+            <tr>
+                <td> Price : </td>
+                <td> <h:inputText value="#{updateCarBean.price}"/> </td>
+            </tr>
+
+        </table>
+
+        <h:selectManyListbox value="#{updateCarBean.driversOfCar}">
+            <f:selectItems value="#{updateCarBean.drivers}" var="driver" itemLabel="#{driver.name} | #{driver.surname} | #{driver.salary}" itemValue="#{driver.catalogId}"/>
+        </h:selectManyListbox>
+        <br />
+        <h:commandButton value="Update" action="#{updateCarBean.update}"/>
+        <h:link value="Cancel" outcome="getCars" />
+    </h:form>
+</h:body>
+</html>
