@@ -15,6 +15,7 @@ import javax.faces.bean.SessionScoped;
 public class RegistrationBean {
     private String login;
     private String password;
+    private String confirmPassword;
     private String name;
     private String surname;
     private String card;
@@ -28,7 +29,7 @@ public class RegistrationBean {
             return "info?message=This login already exists! Try another&faces-redirect=true";
         }
 
-        boolean success = userService.doRegistration(login, password, name, surname, card, address);
+        boolean success = userService.doRegistration(login, password, confirmPassword, name, surname, card, address);
 
         return success ? "login?faces-redirect=true" : "info?message=fail to register!&faces-redirect=true";
     }
@@ -79,5 +80,13 @@ public class RegistrationBean {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

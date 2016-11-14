@@ -75,7 +75,7 @@
 
     <repositories>
         <repository>
-            <catalogId>java.net.m2</catalogId>
+            <id>java.net.m2</id>
             <name>java.net m2 repo</name>
             <url>http://download.java.net/maven/2</url>
         </repository>

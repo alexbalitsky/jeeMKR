@@ -16,7 +16,9 @@
             <h:column>Price : #{item.price}</h:column>
             <h:column>Count : #{item.count}</h:column>
             <h:column>
-                add to cart <h:selectBooleanCheckbox value="#{cartBean.checked[item.id]}" />
+                add to cart
+                <h:selectBooleanCheckbox value="#{cartBean.checked[item.id]}" />
+                <h:inputText size="5" value="#{cartBean.count[item.id]}"/>
             </h:column>
         </h:dataTable>
         <br/>

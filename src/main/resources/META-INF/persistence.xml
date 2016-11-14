@@ -6,7 +6,7 @@
 
     <persistence-unit name="DEVMODE" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>jdbcds</jta-data-source>
+        <jta-data-source>lab2jndi</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>

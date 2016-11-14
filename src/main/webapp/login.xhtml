@@ -8,8 +8,31 @@
 
 
 <h:form>
-    <h:inputText value="#{authorizationBean.login}"/>
-    <h:inputText value="#{authorizationBean.password}"/>
-    <h:commandButton value="login" action="#{authorizationBean.doLogin}"/>
+    <table>
+        <tr>
+            <td>
+                login
+            </td>
+            <td>
+                <h:inputText value="#{authorizationBean.login}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                password
+            </td>
+            <td>
+                <h:inputSecret value="#{authorizationBean.password}"/>
+            </td>
+        </tr>
+
+    </table>
+
+    <br/>
+    <h:commandButton value="sign in" action="#{authorizationBean.doLogin}"/>
+
+    <br/>
+    <br/>
+    <h:link value="sign up" outcome="registration"/>
 </h:form>
 </html>
