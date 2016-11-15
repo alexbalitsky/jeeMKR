@@ -31,7 +31,9 @@
 
         <br />
         <br />
-        <h:link value="Cancel" outcome="getItems" />
+        <h:link value="Cancel" outcome="getItems" >
+            <f:param name="catalogId" value="#{updateItemBean.catalogId}"/>
+        </h:link>
 
         <br />
         <br />

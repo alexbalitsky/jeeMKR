@@ -71,4 +71,8 @@ public class UserService {
         return true;
     }
 
+    public String getGroupName(String login){
+        return groupDAO.find(login).getGroupName();
+    }
+
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Cart</h1>
+
+    <h:form>
+        <h:dataTable value="#{cartBean.items.entrySet().toArray()}" var="entry" border="1">
+            <h:column>Name : #{entry.key.name}</h:column>
+            <h:column>Price : #{entry.key.price}</h:column>
+            <h:column>Count : #{entry.value}</h:column>
+
+            <h:column>
+                <h:commandButton value="Delete from cart" action="#{cartBean.delete(entry.key.id)}"/>
+            </h:column>
+
+        </h:dataTable>
+
+
+
+        <br/>
+        <br/>
+        <h1>Please, enter next information to buy chosen things</h1>
+        <table>
+            <tr>
+                <td>Card Number</td>
+                <td><h:inputText value="#{cartBean.card}" /></td>
+            </tr>
+            <tr>
+                <td>Expiration date</td>
+                <td><h:inputText value="#{cartBean.date}" /></td>
+            </tr>
+            <tr>
+                <td>Security code</td>
+                <td><h:inputText value="#{cartBean.secureCode}" /></td>
+            </tr>
+        </table>
+
+        <br />
+        <br />
+        <h:commandButton value="Buy!" action="#{cartBean.buy}"/>
+
+        <br />
+        <br />
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
+</h:body>
+</html>

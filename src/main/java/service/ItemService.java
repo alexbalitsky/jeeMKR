@@ -4,6 +4,7 @@ import dao.CatalogDAO;
 import dao.ItemDAO;
 import entity.Catalog;
 import entity.Item;
+import entity.User;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -92,5 +93,16 @@ public class ItemService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Item get(String id){
+        Item result = null;
+        try {
+            result = itemDAO.find(Long.valueOf(id));
+        }catch (NumberFormatException nfe){
+            LOG.error("fail to parse item id");
+            nfe.printStackTrace();
+        }
+        return result;
     }
 }

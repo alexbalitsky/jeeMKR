@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Item</h1>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><h:outputText value="#{itemBean.name}"/></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><h:outputText value="#{itemBean.price}"/></td>
+        </tr>
+        <tr>
+            <td>Total count</td>
+            <td><h:outputText value="#{itemBean.count}"/></td>
+        </tr>
+    </table>
+
+    <h:form>
+        <br/>
+        <br/>
+        How much would you like to buy ? <h:inputText value="#{itemBean.countToBuy}" />
+
+        <br/>
+        <br/>
+        <h:commandButton value="Add To cart" action="#{itemBean.addToCart}"/>
+
+        <br/>
+        <br/>
+        <h:link value="Cancel" outcome="getItems" >
+            <f:param name="catalogId" value="#{itemBean.catalogId}"/>
+        </h:link>
+
+        <br />
+        <br />
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
+</h:body>
+</html>

@@ -1,5 +1,7 @@
 package util;
 
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,5 +18,10 @@ public class Utils {
             result.add(t);
         }
         return result;
+    }
+
+
+    public static String getCurrentUser(){
+        return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }
 }

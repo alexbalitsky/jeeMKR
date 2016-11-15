@@ -16,18 +16,20 @@
             <h:column>Price : #{item.price}</h:column>
             <h:column>Count : #{item.count}</h:column>
             <h:column>
-                add to cart
-                <h:selectBooleanCheckbox value="#{cartBean.checked[item.id]}" />
-                <h:inputText size="5" value="#{cartBean.count[item.id]}"/>
+                <h:link value="View details" outcome="item">
+                    <f:param name="itemId" value="#{item.id}"/>
+                    <f:param name="catalogId" value="#{getItemBean.catalogId}"/>
+                </h:link>
             </h:column>
         </h:dataTable>
-        <br/>
-        <br/>
-        <h:commandButton value="Take your goods!" type="submit" action="#{cartBean.buy}"/>
 
         <br/>
         <br/>
         <h:link value="Go to main page" outcome="getCatalogs"/>
+
+        <br/>
+        <br/>
+        <h:link value="Go to cart" outcome="cart" />
 
         <br />
         <br />

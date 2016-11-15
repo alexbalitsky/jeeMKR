@@ -1,50 +1,73 @@
 package jsfbeans;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import service.UserService;
+import entity.Item;
+import service.CartService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by alex on 13.11.16.
+ * Created by obalitskyi on 11/15/16.
  */
-
 @ManagedBean
 @ViewScoped
 public class CartBean {
+    private String card;
+    private String date;
+    private String secureCode;
+
+    private Map<Item, Integer> items;
+
     @EJB
-    private UserService userService;
+    private CartService cartService;
 
-    private Map<String, Boolean> checked = new HashMap<>();
-    private Map<String, String> count = new HashMap<>();
+    public void buy(){
 
-    public String buy(){
-        boolean success = userService.buy(checked, count);
-        return success ? "getCatalogs?&faces-redirect=true" : "/info?message=something wrong&faces-redirect=true";
     }
 
-    public Map<String, Boolean> getChecked() {
-        return checked;
+    @PostConstruct
+    public void init(){
+        items = cartService.getItemsToBuy();
     }
 
-    public void setChecked(Map<String, Boolean> checked) {
-        this.checked = checked;
+    public String delete(String id){
+        boolean success = cartService.delete(id);
+        return success ? "cart?&faces-redirect=true" : "/info?message=fail to delete item from cart&faces-redirect=true";
     }
 
-    public Map<String, String> getCount() {
-        return count;
+    public String getCard() {
+        return card;
     }
 
-    public void setCount(Map<String, String> count) {
-        this.count = count;
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getSecureCode() {
+        return secureCode;
+    }
+
+    public void setSecureCode(String secureCode) {
+        this.secureCode = secureCode;
+    }
+
+    public Map<Item, Integer> getItems() {
+        return items;
+    }
+
+    public void setItems(Map<Item, Integer> items) {
+        this.items = items;
     }
 }
