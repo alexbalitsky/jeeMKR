@@ -1,8 +1,10 @@
 package service;
 
 import dao.GroupDAO;
+import dao.ItemDAO;
 import dao.UserDAO;
 import entity.Group;
+import entity.Item;
 import entity.User;
 import org.apache.log4j.Logger;
 import static util.Constants.DEFAULT_GROUP;
@@ -24,6 +26,9 @@ public class UserService {
 
     @EJB
     private UserDAO userDAO;
+
+    @EJB
+    private ItemDAO itemDAO;
 
     @EJB
     private GroupDAO groupDAO;
@@ -56,20 +61,27 @@ public class UserService {
         return false;
     }
 
-    public boolean buy(Map<String, Boolean> checked, Map<String, String> count){
-        for (Map.Entry<String, Boolean> entry : checked.entrySet()){
-            if (!entry.getValue()){
-                count.remove(entry.getKey());
-            }else if (count.get(entry.getKey()) == null){
-                count.put(entry.getKey(), "0");
+    public boolean buy(String card, String date, String secureCode, Map<Long, Integer> items){
+        boolean success = true;
+        if (!pay(card, date, secureCode)) return false;
+        try {
+            for (Map.Entry<Long, Integer> entry : items.entrySet()){
+                Item item = itemDAO.find(entry.getKey());
+                item.setCount(item.getCount() - entry.getValue());
+                itemDAO.update(item);
             }
+        }catch (Exception e){
+            LOG.error("fail to buy!");
+            success = false;
         }
-        User user = userDAO.find(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
-        for (Map.Entry<String, String> entry : count.entrySet()){
+        return success;
+    }
 
-        }
+    private boolean pay(String card, String date, String secureCode){
+        // TODO pay
         return true;
     }
+
 
     public String getGroupName(String login){
         return groupDAO.find(login).getGroupName();

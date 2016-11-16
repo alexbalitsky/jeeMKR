@@ -33,7 +33,7 @@
 
         <br/>
         <br/>
-        <h:commandButton value="Add To cart" action="#{itemBean.addToCart}"/>
+        <h:commandButton value="Add To cart" action="#{cartBean.addToCart(itemBean.id, itemBean.countToBuy, itemBean.catalogId)}"/>
 
         <br/>
         <br/>
