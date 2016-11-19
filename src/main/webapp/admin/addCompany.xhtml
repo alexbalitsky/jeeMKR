@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      >
+
+<h:body>
+    <h1>Add company</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Email : </td>
+                <td> <h:inputText value="#{addCompanyBean.email}"/> </td>
+            </tr>
+            <tr>
+                <td> Phone : </td>
+                <td> <h:inputText value="#{addCompanyBean.phone}"/> </td>
+            </tr>
+            <tr>
+                <td> Address : </td>
+                <td> <h:inputText value="#{addCompanyBean.address}"/> </td>
+            </tr>
+
+        </table>
+
+        <br />
+        <br />
+        <h:commandButton value="Save!" action="#{addCompanyBean.addCompany}"/>
+
+        <br />
+        <br />
+        <h:link value="Cancel" outcome="index" />
+
+        <br />
+        <br />
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
+</h:body>
+</html>
