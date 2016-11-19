@@ -2,8 +2,8 @@ package service;
 
 import dao.GroupDAO;
 import dao.UserDAO;
-import entity.User;
 import org.apache.log4j.Logger;
+import util.Constants;
 
 import javax.ejb.EJB;
 import javax.ejb.Local;
@@ -41,9 +41,9 @@ public class LoginService {
         String group = groupDAO.find(login).getGroupName();
         switch (group){
             case "admin" :
-                return "/admin/getCatalogs";
+                return "/admin/index?" + Constants.REDIRECT_PARAM;
             case "user" :
-                return "/user/getCatalogs";
+                return "/user/getCategory?" + Constants.REDIRECT_PARAM;
         }
 
         return "/info?message=unknown problem";

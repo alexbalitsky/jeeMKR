@@ -1,7 +1,7 @@
-package jsfbeans;
+package jsfbeans.bck;
 
-import dao.ItemDAO;
-import entity.Item;
+import dao.bck.ItemDAO;
+import entity.bck.Item;
 import service.UserService;
 
 import javax.ejb.EJB;

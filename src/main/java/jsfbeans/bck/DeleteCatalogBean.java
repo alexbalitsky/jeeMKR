@@ -1,12 +1,10 @@
-package jsfbeans;
+package jsfbeans.bck;
 
-import service.CatalogService;
-import service.ItemService;
+import service.bck.CatalogService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  * Created by alex on 13.11.16.

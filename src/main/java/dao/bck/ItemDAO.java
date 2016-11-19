@@ -1,7 +1,7 @@
-package dao;
+package dao.bck;
 
-import entity.Item;
-import entity.User;
+import dao.AbstractDAO;
+import entity.bck.Item;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -11,7 +11,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 @Local
-public class ItemDAO extends AbstractDAO<Item>{
+public class ItemDAO extends AbstractDAO<Item> {
     public ItemDAO() {
         super(Item.class);
     }

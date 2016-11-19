@@ -1,4 +1,4 @@
-package jsfbeans;
+package jsfbeans.bck;
 
 import dao.GroupDAO;
 import service.UserService;

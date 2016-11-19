@@ -1,7 +1,7 @@
-package service;
+package service.bck;
 
-import dao.CatalogDAO;
-import entity.Catalog;
+import dao.bck.CatalogDAO;
+import entity.bck.Catalog;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;

@@ -1,7 +1,7 @@
-package jsfbeans;
+package jsfbeans.bck;
 
-import entity.Catalog;
-import service.CatalogService;
+import entity.bck.Catalog;
+import service.bck.CatalogService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

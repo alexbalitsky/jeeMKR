@@ -1,10 +1,9 @@
-package service;
+package service.bck;
 
-import dao.CatalogDAO;
-import dao.ItemDAO;
-import entity.Catalog;
-import entity.Item;
-import entity.User;
+import dao.bck.CatalogDAO;
+import dao.bck.ItemDAO;
+import entity.bck.Catalog;
+import entity.bck.Item;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;

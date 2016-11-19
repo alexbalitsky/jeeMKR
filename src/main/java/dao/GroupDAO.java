@@ -1,7 +1,6 @@
 package dao;
 
 import entity.Group;
-import entity.User;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

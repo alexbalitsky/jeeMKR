@@ -11,7 +11,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>login.xhtml</welcome-file>
+        <welcome-file>/login.xhtml</welcome-file>
     </welcome-file-list>
 
     <!-- JSF mapping -->
@@ -27,11 +27,6 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-
-    <context-param>
-        <param-name>facelets.LIBRARIES</param-name>
-        <param-value>/WEB-INF/taglib.xml</param-value>
-    </context-param>
 
 
     <security-constraint>
@@ -71,7 +66,7 @@
         <realm-name>jeemkrrealm</realm-name>
         <form-login-config>
             <form-login-page>/login.xhtml</form-login-page>
-            <form-error-page>/adeprecated/index.xhtml</form-error-page>
+            <form-error-page>/info.xhtml</form-error-page>
         </form-login-config>
     </login-config>
 

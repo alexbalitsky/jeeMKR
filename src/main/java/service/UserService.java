@@ -1,10 +1,10 @@
 package service;
 
 import dao.GroupDAO;
-import dao.ItemDAO;
+import dao.bck.ItemDAO;
 import dao.UserDAO;
 import entity.Group;
-import entity.Item;
+import entity.bck.Item;
 import entity.User;
 import org.apache.log4j.Logger;
 
@@ -13,11 +13,8 @@ import static util.Constants.DEFAULT_GROUP;
 import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.faces.context.FacesContext;
 import javax.jms.*;
 import javax.naming.InitialContext;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 /**

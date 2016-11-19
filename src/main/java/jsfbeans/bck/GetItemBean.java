@@ -1,7 +1,7 @@
-package jsfbeans;
+package jsfbeans.bck;
 
-import entity.Item;
-import service.ItemService;
+import entity.bck.Item;
+import service.bck.ItemService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
