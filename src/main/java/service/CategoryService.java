@@ -80,6 +80,15 @@ public class CategoryService {
         return categoryDAO.findAll();
     }
 
+    public List<Vacancy> getVacanciesByCategoryId(String id){
+        try {
+            return util.Utils.toList(categoryDAO.find(Long.valueOf(id)).getVacancies());
+        }catch (Exception e){
+            LOG.error("fail to get category by id");
+        }
+        return null;
+    }
+
 //    public Set<Vacancy> getVacanciesByIds(List<String> ids){
 //        Set<Vacancy> result;
 //        try {

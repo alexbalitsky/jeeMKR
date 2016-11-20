@@ -2,10 +2,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Categories</h1>
+    <h:link value="Go to main page" outcome="index" />
+    <h:dataTable value="#{getCategoryBean.categories}" var="category" border="1">
+        <h:column>Name : #{category.title}</h:column>
+        <h:column>
+            <h3>Vacancies:</h3>
+            <h:dataTable value="#{getCategoryBean.map.get((category.id))}" var="vacancy">
+                <h:column>Vacancy title : #{vacancy.title};</h:column>
+                <h:column>Vacancy date : #{vacancy.date};</h:column>
+                <h:column>Vacancy salary: #{vacancy.salary};</h:column>
+                <h:column>Vacancy requirement : #{vacancy.requirement};</h:column>
+            </h:dataTable>
+        </h:column>
+        <h:column>
+            <h:form>
+                <h:link value="vacancies" outcome="getVacancy">
+                    <f:param name="category_id" value="#{category.id}"/>
+                </h:link>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+</h:body>
 </html>

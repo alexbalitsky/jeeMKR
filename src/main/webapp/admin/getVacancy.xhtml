@@ -11,7 +11,7 @@
 <h:body>
     <h1>Vacancies</h1>
     <h:link value="Go to main page" outcome="index" />
-    <h:dataTable value="#{getVacancyBean.getVacancies()}" var="vacancy" border="1">
+    <h:dataTable value="#{getVacancyBean.vacancies}" var="vacancy" border="1">
         <h:column>Vacancy: #{vacancy.title} | #{vacancy.salary}</h:column>
         <h:column>
             Company name : #{getVacancyBean.mapCompany.get(vacancy.id).name}<br/>

@@ -28,12 +28,13 @@ public class GetVacancyBean {
 
 
     private List<Vacancy> vacancies = new ArrayList<>();
-    private Map<Long, Company> mapCompany = new HashMap();
-    private Map<Long, Category> mapCategory = new HashMap();
-    private Map<Long, Position> mapPosition = new HashMap();
+    private Map<Long, Company> mapCompany = new HashMap<>();
+    private Map<Long, Category> mapCategory = new HashMap<>();
+    private Map<Long, Position> mapPosition = new HashMap<>();
 
     @PostConstruct
     public void init(){
+
         vacancies.addAll(vacancyService.getAllVacancies());
         for (Vacancy vacancy: vacancies){
             mapCompany.put(vacancy.getId(), vacancy.getCompany());

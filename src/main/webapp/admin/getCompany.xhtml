@@ -11,7 +11,7 @@
 <h:body>
     <h1>Companies</h1>
     <h:link value="Go to main page" outcome="index" />
-    <h:dataTable value="#{getCompanyBean.getCompanies()}" var="company" border="1">
+    <h:dataTable value="#{getCompanyBean.companies}" var="company" border="1">
         <h:column>Company: #{company.name} | #{company.email}</h:column>
         <h:column>
             <h3>Vacancies:</h3>

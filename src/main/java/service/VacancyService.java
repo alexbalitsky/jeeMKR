@@ -8,6 +8,7 @@ import entity.Category;
 import entity.Company;
 import entity.Position;
 import entity.Vacancy;
+import jms.MessageSender;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -34,6 +35,9 @@ public class VacancyService {
     @EJB
     private PositionDAO positionDAO;
 
+    @EJB
+    private MessageSender messageSender;
+
     public boolean save(String title, String date, String salary, String requirement, String companyID, String categoryID, String positionID) {
         try {
             Vacancy vacancy = new Vacancy(title, date, salary, requirement);
@@ -51,6 +55,10 @@ public class VacancyService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void sendBroadcastMessage(){
+        messageSender.send();
     }
 
     public boolean update(String vacancyId, String title, String date, String salary, String requirement, String companyID, String categoryID, String positionID){
@@ -107,7 +115,14 @@ public class VacancyService {
         return false;
     }
 
-
+    public Vacancy get(String id){
+        try {
+            return vacancyDAO.find(Long.valueOf(id));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public List<Vacancy> getAllVacancies() {
         return util.Utils.toList(vacancyDAO.findAll());

@@ -9,10 +9,10 @@
 </h:head>
 
 <h:body>
-    <h:outputText value="#{vacancyBean.vacancy.position.description}"/>
-
     <h:form>
-        <h:commandButton value="Send request" action="#{vacancyBean.sendRequest}"/>
+        <h:inputText value="#{requestBean.text}" />
+
+        <h:commandButton value="Send" action="#{requestBean.send}"/>
     </h:form>
 
 </h:body>
