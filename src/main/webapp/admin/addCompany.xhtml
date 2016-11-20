@@ -11,6 +11,10 @@
     <h:form>
         <table>
             <tr>
+                <td> Name : </td>
+                <td> <h:inputText value="#{addCompanyBean.name}"/> </td>
+            </tr>
+            <tr>
                 <td> Email : </td>
                 <td> <h:inputText value="#{addCompanyBean.email}"/> </td>
             </tr>
@@ -27,7 +31,7 @@
 
         <br />
         <br />
-        <h:commandButton value="Save!" action="#{addCompanyBean.addCompany}"/>
+        <h:commandButton value="Save!" action="#{addCompanyBean.save}"/>
 
         <br />
         <br />

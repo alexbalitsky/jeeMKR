@@ -21,14 +21,15 @@ import java.util.List;
 public class AddCategoryBean {
     private String title;
 
+
     @EJB
     private CategoryService categoryService;
 
-    public String addCategory(){
-        if (categoryService.addCategory(title)){
+    public String save(){
+        if (categoryService.save(title)){
             return "index?" + Constants.REDIRECT_PARAM;
         }else {
-            return "info?message=fail to add company" + Constants.REDIRECT_PARAM;
+            return "info?message=fail to add category" + Constants.REDIRECT_PARAM;
         }
     }
 

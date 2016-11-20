@@ -7,19 +7,23 @@
 >
 
 <h:body>
-    <h1>Add category</h1>
+    <h1>Add position</h1>
     <h:form>
         <table>
             <tr>
-                <td> Title : </td>
-                <td> <h:inputText value="#{addCategoryBean.title}"/> </td>
+                <td> Name: </td>
+                <td> <h:inputText value="#{addPositionBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> Description: </td>
+                <td> <h:inputText value="#{addPositionBean.description}"/> </td>
             </tr>
 
         </table>
 
         <br />
         <br />
-        <h:commandButton value="Save!" action="#{addCategoryBean.save}"/>
+        <h:commandButton value="Save!" action="#{addPositionBean.save}"/>
 
         <br />
         <br />

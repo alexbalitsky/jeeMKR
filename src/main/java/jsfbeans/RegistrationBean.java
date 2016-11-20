@@ -18,8 +18,7 @@ public class RegistrationBean {
     private String confirmPassword;
     private String name;
     private String surname;
-    private String card;
-    private String address;
+    private String email;
 
     @EJB
     private UserService userService;
@@ -29,7 +28,7 @@ public class RegistrationBean {
             return "info?message=This login already exists! Try another&faces-redirect=true";
         }
 
-        boolean success = userService.doRegistration(login, password, confirmPassword, name, surname, card, address);
+        boolean success = userService.doRegistration(login, password, confirmPassword, name, surname, email);
 
         return success ? "login?faces-redirect=true" : "info?message=fail to register!&faces-redirect=true";
     }
@@ -50,6 +49,14 @@ public class RegistrationBean {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getName() {
         return name;
     }
@@ -66,27 +73,11 @@ public class RegistrationBean {
         this.surname = surname;
     }
 
-    public String getCard() {
-        return card;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCard(String card) {
-        this.card = card;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

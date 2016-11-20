@@ -2,10 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update company</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> name: </td>
+                <td> <h:inputText value="#{updateCompanyBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> email: </td>
+                <td> <h:inputText value="#{updateCompanyBean.email}"/> </td>
+            </tr>
+            <tr>
+                <td> phone: </td>
+                <td> <h:inputText value="#{updateCompanyBean.phone}"/> </td>
+            </tr>
+            <tr>
+                <td> address: </td>
+                <td> <h:inputText value="#{updateCompanyBean.address}"/> </td>
+            </tr>
+        </table>
+
+
+        <br />
+        <h:commandButton value="Update" action="#{updateCompanyBean.update}"/>
+
+        <h:link value="Cancel" outcome="getCompany" />
+    </h:form>
+
+</h:body>
 </html>

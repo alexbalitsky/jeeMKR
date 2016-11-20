@@ -16,6 +16,9 @@ public class Company {
     private Long id;
 
     @Column
+    private String name;
+
+    @Column
     private String email;
 
     @Column
@@ -27,11 +30,13 @@ public class Company {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "company")
     private Set<Vacancy> vacancies;
 
-    public Company(String email, String phone, String address) {
+    public Company(String name, String email, String phone, String address) {
+        this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
     }
+
     public Company(){
 
     }
@@ -42,6 +47,14 @@ public class Company {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -84,6 +97,7 @@ public class Company {
         Company company = (Company) o;
 
         if (id != null ? !id.equals(company.id) : company.id != null) return false;
+        if (name != null ? !name.equals(company.name) : company.name != null) return false;
         if (email != null ? !email.equals(company.email) : company.email != null) return false;
         if (phone != null ? !phone.equals(company.phone) : company.phone != null) return false;
         return address != null ? address.equals(company.address) : company.address == null;
@@ -93,6 +107,7 @@ public class Company {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);

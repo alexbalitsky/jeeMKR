@@ -14,7 +14,7 @@ import javax.persistence.criteria.*;
 import java.util.*;
 
 /**
- * Created by obalitskyi on 10/4/16.
+ * Created by ignatenko on 19.11.16.
  */
 public abstract class AbstractDAO<T> {
     @PersistenceContext

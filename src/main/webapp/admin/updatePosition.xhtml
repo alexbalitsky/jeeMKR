@@ -9,20 +9,24 @@
 </h:head>
 
 <h:body>
-    <h1>Update category</h1>
+    <h1>Update position</h1>
     <h:form>
         <table>
             <tr>
-                <td> title: </td>
-                <td> <h:inputText value="#{updateCategoryBean.title}"/> </td>
+                <td> name: </td>
+                <td> <h:inputText value="#{updatePositionBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> description: </td>
+                <td> <h:inputText value="#{updatePositionBean.description}"/> </td>
             </tr>
         </table>
 
 
         <br />
-        <h:commandButton value="Update" action="#{updateCategoryBean.update}"/>
+        <h:commandButton value="Update" action="#{updatePositionBean.update}"/>
 
-        <h:link value="Cancel" outcome="getCategory" />
+        <h:link value="Cancel" outcome="getPosition" />
     </h:form>
 
 </h:body>

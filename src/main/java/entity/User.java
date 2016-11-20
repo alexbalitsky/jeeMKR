@@ -22,16 +22,17 @@ public class User {
     private String surname;
 
     @Column
-    private String cv;
+    private String email;
 
     public User() {
     }
 
-    public User(String login, String password, String name, String surname, String card, String address) {
+    public User(String login, String password, String name, String surname, String email) {
         this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
+        this.email = email;
     }
 
     public String getLogin() {
@@ -66,12 +67,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getCv() {
-        return cv;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCv(String cv) {
-        this.cv = cv;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -85,7 +86,7 @@ public class User {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        return cv != null ? cv.equals(user.cv) : user.cv == null;
+        return email != null ? email.equals(user.email) : user.email == null;
 
     }
 
@@ -95,7 +96,7 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (cv != null ? cv.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 }

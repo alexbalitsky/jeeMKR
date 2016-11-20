@@ -13,15 +13,19 @@
     <h:form>
         <table>
             <tr>
-                <td> Name : </td>
+                <td> Title : </td>
+                <td> <h:inputText value="#{addVacancyBean.title}"/> </td>
+            </tr>
+            <tr>
+                <td> Date : </td>
                 <td> <h:inputText value="#{addVacancyBean.date}"/> </td>
             </tr>
             <tr>
-                <td> Surname : </td>
+                <td> Salary : </td>
                 <td> <h:inputText value="#{addVacancyBean.salary}"/> </td>
             </tr>
             <tr>
-                <td> Salary : </td>
+                <td> Requirement : </td>
                 <td> <h:inputText value="#{addVacancyBean.requirement}"/> </td>
             </tr>
 
@@ -30,7 +34,7 @@
         <br/>
         <h3>Choose company</h3>
         <h:selectOneListbox value="#{addVacancyBean.company}">
-            <f:selectItems value="#{addVacancyBean.companies}" var="company" itemLabel="#{company.email} | #{company.phone} | #{company.address}" itemValue="#{company.id}"/>
+            <f:selectItems value="#{addVacancyBean.companies}" var="company" itemLabel="#{company.name} | #{company.email} | #{company.address}" itemValue="#{company.id}"/>
         </h:selectOneListbox>
 
         <br/>
@@ -39,9 +43,15 @@
             <f:selectItems value="#{addVacancyBean.categories}" var="category" itemLabel="#{category.title}" itemValue="#{category.id}"/>
         </h:selectOneListbox>
 
+        <br/>
+        <h3>Choose position</h3>
+        <h:selectOneListbox value="#{addVacancyBean.position}">
+            <f:selectItems value="#{addVacancyBean.positions}" var="position" itemLabel="#{position.name} | #{position.description}" itemValue="#{position.id}"/>
+        </h:selectOneListbox>
+
         <br />
         <br />
-        <h:commandButton value="Save" action="#{addVacancyBean.addVacancy}"/>
+        <h:commandButton value="Save" action="#{addVacancyBean.save}"/>
 
         <br />
         <br />

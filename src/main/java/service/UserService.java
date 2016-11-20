@@ -18,7 +18,7 @@ import javax.naming.InitialContext;
 import java.util.Map;
 
 /**
- * Created by alex on 12.11.16.
+ * Created by ignatenko on 19.11.16.
  */
 
 @Stateless
@@ -44,11 +44,11 @@ public class UserService {
         return userDAO.find(login);
     }
 
-    public boolean doRegistration(String login, String password, String confirmPassword, String name, String surname, String card, String address) {
+    public boolean doRegistration(String login, String password, String confirmPassword, String name, String surname, String email) {
         if (!password.equals(confirmPassword)) {
             return false;
         }
-        User user = new User(login, password, name, surname, card, address);
+        User user = new User(login, password, name, surname, email);
         Group group = new Group(login, DEFAULT_GROUP);
         try {
             groupDAO.save(group);

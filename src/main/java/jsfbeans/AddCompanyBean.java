@@ -18,6 +18,7 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class AddCompanyBean {
+    private String name;
     private String email;
     private String phone;
     private String address;
@@ -25,12 +26,20 @@ public class AddCompanyBean {
     @EJB
     private CompanyService companyService;
 
-    public String addCompany(){
-        if (companyService.addCompany(email, phone, address)){
+    public String save(){
+        if (companyService.save(name, email, phone, address)){
             return "index?" + Constants.REDIRECT_PARAM;
         }else {
             return "info?message=fail to add company" + Constants.REDIRECT_PARAM;
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

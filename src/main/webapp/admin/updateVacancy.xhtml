@@ -2,10 +2,60 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update Vacancy</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Title : </td>
+                <td> <h:inputText value="#{updateVacancyBean.title}"/> </td>
+            </tr>
+            <tr>
+                <td> Date : </td>
+                <td> <h:inputText value="#{updateVacancyBean.date}"/> </td>
+            </tr>
+            <tr>
+                <td> Salary : </td>
+                <td> <h:inputText value="#{updateVacancyBean.salary}"/> </td>
+            </tr>
+            <tr>
+                <td> Requirement : </td>
+                <td> <h:inputText value="#{updateVacancyBean.requirement}"/> </td>
+            </tr>
+
+        </table>
+
+        <br/>
+        <h3>Choose company</h3>
+        <h:selectOneListbox value="#{updateVacancyBean.company}">
+            <f:selectItems value="#{updateVacancyBean.companies}" var="company" itemLabel="#{company.name} | #{company.email} | #{company.address}" itemValue="#{company.id}"/>
+        </h:selectOneListbox>
+
+        <br/>
+        <h3>Choose Category</h3>
+        <h:selectOneListbox value="#{updateVacancyBean.category}">
+            <f:selectItems value="#{updateVacancyBean.categories}" var="category" itemLabel="#{category.title}" itemValue="#{category.id}"/>
+        </h:selectOneListbox>
+
+        <br/>
+        <h3>Choose position</h3>
+        <h:selectOneListbox value="#{updateVacancyBean.position}">
+            <f:selectItems value="#{updateVacancyBean.positions}" var="position" itemLabel="#{position.name} | #{position.description}" itemValue="#{position.id}"/>
+        </h:selectOneListbox>
+
+        <br />
+        <br />
+        <h:commandButton value="Save" action="#{updateVacancyBean.update}"/>
+
+        <br />
+        <br />
+        <h:link value="Cancel" outcome="getVacancy" />
+    </h:form>
+</h:body>
 </html>

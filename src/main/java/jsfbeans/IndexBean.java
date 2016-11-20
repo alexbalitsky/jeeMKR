@@ -23,6 +23,26 @@ public class IndexBean {
         return "addVacancy?" + Constants.REDIRECT_PARAM;
     }
 
+    public String addPosition(){
+        return "addPosition?" + Constants.REDIRECT_PARAM;
+    }
+
+
+    public String getCategories(){
+        return "getCategory?"+Constants.REDIRECT_PARAM;
+    }
+
+    public String getCompanies(){
+        return "getCompany?" + Constants.REDIRECT_PARAM;
+    }
+
+    public String getVacancies(){
+        return "getVacancy?" + Constants.REDIRECT_PARAM;
+    }
+
+    public String getPositions(){
+        return "getPosition?" + Constants.REDIRECT_PARAM;
+    }
 
 
 }

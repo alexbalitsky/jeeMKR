@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by alex on 13.11.16.
+ * Created by ignatenko on 19.11.16.
  */
 
 @Stateless
@@ -38,6 +38,7 @@ public class LoginService {
             return "/info?message=forbidden";
         }
 
+        // end hardcore!
         String group = groupDAO.find(login).getGroupName();
         switch (group){
             case "admin" :

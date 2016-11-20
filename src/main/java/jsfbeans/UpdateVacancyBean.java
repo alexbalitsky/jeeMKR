@@ -1,25 +1,29 @@
 package jsfbeans;
 
+
+
 import entity.Category;
 import entity.Company;
 import entity.Position;
-import entity.Vacancy;
 import service.VacancyService;
-import util.Constants;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ignatenko on 19.11.16.
  */
-
 @ManagedBean
 @ViewScoped
-public class AddVacancyBean {
+public class UpdateVacancyBean {
+
     private String title;
     private String date;
     private String salary;
@@ -29,28 +33,28 @@ public class AddVacancyBean {
     private List<Category> categories;
     private List<Position> positions;
 
-
-    private String company;
-    private String category;
-    private String position;
-
     @EJB
     private VacancyService vacancyService;
+
+    private String vacancyId;
+    private String company;
+    private String position;
+    private String category;
 
     @PostConstruct
     public void init(){
         this.companies = vacancyService.getAllCompanies();
         this.categories = vacancyService.getAllCategories();
         this.positions = vacancyService.getAllPositions();
+        vacancyId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("vacancy");
     }
 
-    public String save(){
-        if (vacancyService.save(title, date, salary, requirement, company, category, position)){
-            return "index?" + Constants.REDIRECT_PARAM;
-        }else {
-            return "info?message=can`t add vacancy&" + Constants.REDIRECT_PARAM;
-        }
+    public String update(){
+        boolean success = vacancyService.update(vacancyId, title, date, salary, requirement, company, category, position);
+        return success ? "getVacancy?faces-redirect=true" :
+                "info?message=fail to update vacancy!&faces-redirect=true";
     }
+
 
     public String getTitle() {
         return title;
@@ -67,8 +71,6 @@ public class AddVacancyBean {
     public void setDate(String date) {
         this.date = date;
     }
-
-
 
     public String getSalary() {
         return salary;
@@ -102,22 +104,6 @@ public class AddVacancyBean {
         this.categories = categories;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public List<Position> getPositions() {
         return positions;
     }
@@ -126,11 +112,35 @@ public class AddVacancyBean {
         this.positions = positions;
     }
 
+    public String getVacancyId() {
+        return vacancyId;
+    }
+
+    public void setVacancyId(String vacancyId) {
+        this.vacancyId = vacancyId;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     public String getPosition() {
         return position;
     }
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
