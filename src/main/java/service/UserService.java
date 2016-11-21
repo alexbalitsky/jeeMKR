@@ -4,6 +4,7 @@ import dao.GroupDAO;
 import dao.bck.ItemDAO;
 import dao.UserDAO;
 import entity.Group;
+import entity.Vacancy;
 import entity.bck.Item;
 import entity.User;
 import org.apache.log4j.Logger;
@@ -15,7 +16,9 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.jms.*;
 import javax.naming.InitialContext;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by ignatenko on 19.11.16.
@@ -114,6 +117,20 @@ public class UserService {
         } catch (Exception e) {
             LOG.error(e);
         }
+    }
+
+    public boolean addVacancy(String userId, Vacancy vacancy){
+        try {
+            User user = userDAO.find(userId);
+            Set<Vacancy> vacanciesToAdd = new HashSet<Vacancy>();
+            vacanciesToAdd.add(vacancy);
+            user.setVacancies(vacanciesToAdd);
+            userDAO.merge(user);
+            return true;
+        } catch(Exception e){
+            LOG.error("Cant` add vacancy to user");
+        }
+        return false;
     }
 
 }

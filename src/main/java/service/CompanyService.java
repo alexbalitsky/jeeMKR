@@ -73,4 +73,8 @@ public class CompanyService {
     public Set<Company> getAll(){
         return companyDAO.findAll();
     }
+
+    public Company getCompanybyId(String id){
+        return companyDAO.find(id);
+    }
 }

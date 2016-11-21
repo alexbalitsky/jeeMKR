@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by alex on 12.11.16.
@@ -23,6 +24,13 @@ public class User {
 
     @Column
     private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "vacancy_user", joinColumns = {
+            @JoinColumn(name = "vacancy_id")},
+            inverseJoinColumns = {@JoinColumn(name = "login")})
+    private Set<Vacancy> vacancies;
+
 
     public User() {
     }
@@ -73,6 +81,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Vacancy> getVacancies() {
+        return vacancies;
+    }
+
+    public void setVacancies(Set<Vacancy> vacancies) {
+        this.vacancies = vacancies;
     }
 
     @Override

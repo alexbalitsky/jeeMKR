@@ -8,7 +8,7 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 
 /**
- * @author Semeniuk Vadym
+ * @author Ignatenko Olexandr
  */
 @MessageDriven(mappedName ="jmsjndi" )
 public class MessageReceiver implements MessageListener {

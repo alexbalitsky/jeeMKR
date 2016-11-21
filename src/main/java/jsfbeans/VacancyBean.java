@@ -17,7 +17,10 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @ViewScoped
 public class VacancyBean {
-    private String id;
+    private String vacancy_id;
+
+    private String vacancy_id_request;
+
     private Vacancy vacancy;
 
     @EJB
@@ -25,21 +28,21 @@ public class VacancyBean {
 
     @PostConstruct
     public void init(){
-        id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("vacancy_id");
-        vacancy = vacancyService.get(id);
+        vacancy_id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("vacancy_id");
+        vacancy = vacancyService.get(vacancy_id);
     }
 
     public String sendRequest(){
-        vacancyService.sendBroadcastMessage();
-        return "request?" + Constants.REDIRECT_PARAM;
+        //vacancyService.sendBroadcastMessage();
+        return "request?" + Constants.REDIRECT_PARAM+"&"+"vacancy_id="+vacancy_id;
     }
 
-    public String getId() {
-        return id;
+    public String getVacancy_id() {
+        return vacancy_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setVacancy_id(String vacancy_id) {
+        this.vacancy_id = vacancy_id;
     }
 
     public Vacancy getVacancy() {
@@ -48,5 +51,13 @@ public class VacancyBean {
 
     public void setVacancy(Vacancy vacancy) {
         this.vacancy = vacancy;
+    }
+
+    public String getVacancy_id_request() {
+        return vacancy_id_request;
+    }
+
+    public void setVacancy_id_request(String vacancy_id_request) {
+        this.vacancy_id_request = vacancy_id_request;
     }
 }

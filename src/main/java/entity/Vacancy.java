@@ -3,6 +3,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by ignatenko on 19.11.16.
@@ -39,6 +40,12 @@ public class Vacancy {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "company_id")
     private Company company;
+
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+//    @JoinTable(name = "vacancy_user", joinColumns = {
+//            @JoinColumn(name = "vacancy_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "login")})
+//    private Set<User> users;
 
     public Vacancy(String title, String date, String salary, String requirement) {
         this.title = title;
@@ -114,6 +121,13 @@ public class Vacancy {
         this.company = company;
     }
 
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
 
     @Override
     public boolean equals(Object o) {

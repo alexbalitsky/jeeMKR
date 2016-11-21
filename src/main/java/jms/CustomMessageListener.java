@@ -4,7 +4,7 @@ package jms;
 import javax.jms.*;
 
 /**
- * @author Semeniuk Vadym
+ * @author Ignatenko Olexandr
  */
 public class CustomMessageListener implements MessageListener {
     @Override

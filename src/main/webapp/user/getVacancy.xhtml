@@ -10,7 +10,7 @@
 
 <h:body>
     <h1>Vacancies</h1>
-    <h:link value="Go to main page" outcome="index" />
+    <h:link value="Go to main page" outcome="getCategory" />
     <h:dataTable value="#{userGetVacancyBean.vacancies}" var="vacancy" border="1">
         <h:column>Vacancy : #{vacancy.title}</h:column>
         <h:column>Salary : #{vacancy.salary}</h:column>
@@ -27,11 +27,18 @@
             Position title : #{vacancy.position.name}
         </h:column>
 
-
-        <h:link value="View details" outcome="vacancy">
-            <f:param name="vacancy_id" value="#{vacancy.id}"/>
-        </h:link>
+        <h:column>
+            <h:form>
+                <h:link value="View details" outcome="vacancy">
+                    <f:param name="vacancy_id" value="#{vacancy.id}"/>
+                </h:link>
+            </h:form>
+        </h:column>
 
     </h:dataTable>
+
+    <h:form>
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
 </h:body>
 </html>

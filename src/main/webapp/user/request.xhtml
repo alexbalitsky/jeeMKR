@@ -10,9 +10,15 @@
 
 <h:body>
     <h:form>
+        <h:outputText value="Add additional information about yourself"/>
+        <br/>
         <h:inputText value="#{requestBean.text}" />
 
         <h:commandButton value="Send" action="#{requestBean.send}"/>
+    </h:form>
+
+    <h:form>
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
     </h:form>
 
 </h:body>

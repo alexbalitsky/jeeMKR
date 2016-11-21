@@ -4,17 +4,18 @@ import dao.CategoryDAO;
 import dao.CompanyDAO;
 import dao.PositionDAO;
 import dao.VacancyDAO;
-import entity.Category;
-import entity.Company;
-import entity.Position;
-import entity.Vacancy;
+import entity.*;
 import jms.MessageSender;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by ignatenko on 19.11.16.
@@ -137,5 +138,54 @@ public class VacancyService {
 
     public List<Position> getAllPositions() {
         return util.Utils.toList(positionDAO.findAll());
+    }
+
+    public boolean isVacancyhaveUser(Vacancy vacancy, User user){
+        try {
+            if (user.getVacancies().contains(vacancy)) {
+                return true;
+            }
+        }catch(Exception e){
+            LOG.error("fail to parse vacancy has user");
+        }
+        return false;
+    }
+
+    public boolean sendEmailWithGmailSMTP(String emailCompany, String emailUser, String companyName){
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("mkrexample@gmail.com","mkrexample123");
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("mkrexample@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(emailCompany));
+            message.setSubject("New slave!");
+            message.setText("Dear "+companyName+" This slave want to work for you. Answer him as fast " +
+                    "as you can "+emailUser);
+
+            Transport.send(message);
+
+           LOG.info("Mail has alread sent");
+            return true;
+
+        } catch (MessagingException e) {
+            LOG.info("Error in sending email", e);
+        }
+
+        return false;
     }
 }
