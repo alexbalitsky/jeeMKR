@@ -64,9 +64,11 @@ public class PositionService {
         try {
             Position position = positionDAO.find(Long.valueOf(id));
             Vacancy vacancy = position.getVacancy();
-            vacancy.setPosition(null);
+            if (vacancy!=null) {
+                vacancy.setPosition(null);
+                vacancyDAO.merge(vacancy);
+            }
             position.setVacancy(null);
-            vacancyDAO.merge(vacancy);
             positionDAO.delete(position);
             return true;
         }catch (NumberFormatException nfe){
