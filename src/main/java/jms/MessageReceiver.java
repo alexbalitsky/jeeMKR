@@ -5,19 +5,19 @@ import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.jms.ObjectMessage;
+import javax.jms.TextMessage;
 
 /**
  * @author Ignatenko Olexandr
  */
-@MessageDriven(mappedName ="jmsjndi" )
+@MessageDriven(mappedName = "jms/topic")
 public class MessageReceiver implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        ObjectMessage issueDTOmessage = (ObjectMessage) message;
+        TextMessage vacancymessage = (TextMessage) message;
         try {
-            System.out.println("Issue changed: "+ (issueDTOmessage.getObject()).toString());
+            System.out.println("Message changed: " + (vacancymessage.getText()));
         } catch (JMSException e) {
             e.printStackTrace();
         }

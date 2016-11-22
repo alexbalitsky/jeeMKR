@@ -58,8 +58,8 @@ public class VacancyService {
         return false;
     }
 
-    public void sendBroadcastMessage(){
-        messageSender.send();
+    public void sendBroadcastMessage(String messageText){
+        messageSender.send(messageText);
     }
 
     public boolean update(String vacancyId, String title, String date, String salary, String requirement, String companyID, String categoryID, String positionID){

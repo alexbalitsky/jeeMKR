@@ -51,6 +51,7 @@ public class UpdateVacancyBean {
 
     public String update(){
         boolean success = vacancyService.update(vacancyId, title, date, salary, requirement, company, category, position);
+        vacancyService.sendBroadcastMessage("Vacanacy was changed");
         return success ? "getVacancy?faces-redirect=true" :
                 "info?message=fail to update vacancy!&faces-redirect=true";
     }
