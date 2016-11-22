@@ -1,9 +1,6 @@
 package service;
 
-import dao.CategoryDAO;
-import dao.CompanyDAO;
-import dao.PositionDAO;
-import dao.VacancyDAO;
+import dao.*;
 import entity.*;
 import jms.MessageSender;
 import org.apache.log4j.Logger;
@@ -16,6 +13,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * Created by ignatenko on 19.11.16.
@@ -35,6 +33,8 @@ public class VacancyService {
     private CategoryDAO categoryDAO;
     @EJB
     private PositionDAO positionDAO;
+    @EJB
+    private UserDAO userDAO;
 
     @EJB
     private MessageSender messageSender;
@@ -104,6 +104,13 @@ public class VacancyService {
             if (company != null){
                 company.getVacancies().remove(vacancy);
             }
+            Set<User> users = vacancy.getUsers();
+            if (users!=null){
+                for(User user:users){
+                    user.getVacancies().remove(vacancy);
+                }
+
+            }
             vacancyDAO.delete(vacancy);
             return true;
         }catch (NumberFormatException nfe){
@@ -151,7 +158,7 @@ public class VacancyService {
         return false;
     }
 
-    public boolean sendEmailWithGmailSMTP(String emailCompany, String emailUser, String companyName){
+    public boolean sendEmailWithGmailSMTP(String emailCompany, String emailUser, String companyName, String text){
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
@@ -175,7 +182,7 @@ public class VacancyService {
                     InternetAddress.parse(emailCompany));
             message.setSubject("New slave!");
             message.setText("Dear "+companyName+" This slave want to work for you. Answer him as fast " +
-                    "as you can "+emailUser);
+                    "as you can "+emailUser+"/n. cvlink: "+text);
 
             Transport.send(message);
 

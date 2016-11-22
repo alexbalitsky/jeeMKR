@@ -2,6 +2,7 @@ package service;
 
 import dao.CompanyDAO;
 import entity.Company;
+import entity.Vacancy;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -22,7 +23,8 @@ public class CompanyService {
     @EJB
     private CompanyDAO companyDAO;
 
-
+    @EJB
+    private VacancyService vacancyService;
 
     public boolean save(String name, String email, String phone, String address){
         Company company = new Company(name,email,phone, address);
@@ -58,7 +60,14 @@ public class CompanyService {
 
     public boolean delete(String id){
         try {
-            companyDAO.delete(Long.valueOf(id));
+            //companyDAO.delete(Long.valueOf(id));
+            //return true;
+            Company company = companyDAO.find(Long.valueOf(id));
+            Set<Vacancy> vacancies = company.getVacancies();
+            for (Vacancy vacancy : vacancies){
+                vacancyService.delete(vacancy.getId().toString());
+            }
+            companyDAO.delete(company);
             return true;
         }catch (NumberFormatException nfe){
             LOG.error("fail to parse company id");

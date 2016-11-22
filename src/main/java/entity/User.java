@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,10 +27,10 @@ public class User {
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "vacancy_user", joinColumns = {
-            @JoinColumn(name = "vacancy_id")},
-            inverseJoinColumns = {@JoinColumn(name = "login")})
-    private Set<Vacancy> vacancies;
+    @JoinTable(name = "user_vacancy", joinColumns = {
+            @JoinColumn(name = "login")},
+            inverseJoinColumns = {@JoinColumn(name = "vacancy_id")})
+    private Set<Vacancy> vacancies = new HashSet<Vacancy>();
 
 
     public User() {

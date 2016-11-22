@@ -20,6 +20,10 @@ public class Position {
     @Column
     private String name;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, mappedBy="position")
+    @JoinColumn(name="vacancy_id")
+    private Vacancy vacancy;
+
     public Position(String description, String name) {
         this.description = description;
         this.name = name;
@@ -50,6 +54,14 @@ public class Position {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    public void setVacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
     }
 
     @Override

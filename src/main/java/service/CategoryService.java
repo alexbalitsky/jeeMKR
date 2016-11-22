@@ -28,6 +28,9 @@ public class CategoryService {
     @EJB
     private VacancyDAO vacancyDAO;
 
+    @EJB
+    private VacancyService vacancyService;
+
     public boolean save(String title){
         Category category = new Category(title);
         try {
@@ -62,7 +65,7 @@ public class CategoryService {
             Category category = categoryDAO.find(Long.valueOf(id));
             Set<Vacancy> vacancies = category.getVacancies();
             for (Vacancy vacancy : vacancies){
-                vacancyDAO.delete(vacancy);
+                vacancyService.delete(vacancy.getId().toString());
             }
             categoryDAO.delete(category);
             return true;

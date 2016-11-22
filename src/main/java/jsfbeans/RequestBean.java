@@ -55,13 +55,11 @@ public class RequestBean {
             //TODO check if this user has already send vacancy for it
             //add to Table;
             if (!vacancyService.isVacancyhaveUser(vacancy, user)){
-                //Set<Vacancy> vacanciesToAdd = new HashSet<>();
-
                 userService.addVacancy(userId, vacancy);
+                //send email
+                vacancyService.sendEmailWithGmailSMTP(vacancy.getCompany().getEmail(), user.getEmail(), vacancy.getCompany().getName(), text);
+                return "getCategory?" + Constants.REDIRECT_PARAM;
             }
-            //send email
-            vacancyService.sendEmailWithGmailSMTP(vacancy.getCompany().getEmail(), user.getEmail(), vacancy.getCompany().getName());
-            return "getCategory?" + Constants.REDIRECT_PARAM;
         }catch(Exception e){
             LOG.warn("fail to send email to company", e);
         }

@@ -57,7 +57,9 @@ public class PositionService {
 
     public boolean delete(String id){
         try {
-            positionDAO.delete(Long.valueOf(id));
+            Position position = positionDAO.find(Long.valueOf(id));
+            position.setVacancy(null);
+            positionDAO.delete(position);
             return true;
         }catch (NumberFormatException nfe){
             LOG.error("fail to parse position id");

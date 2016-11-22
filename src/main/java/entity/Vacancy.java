@@ -41,11 +41,8 @@ public class Vacancy {
     @JoinColumn(name = "company_id")
     private Company company;
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
-//    @JoinTable(name = "vacancy_user", joinColumns = {
-//            @JoinColumn(name = "vacancy_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "login")})
-//    private Set<User> users;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "vacancies")
+    private Set<User> users;
 
     public Vacancy(String title, String date, String salary, String requirement) {
         this.title = title;
@@ -121,13 +118,13 @@ public class Vacancy {
         this.company = company;
     }
 
-//    public Set<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(Set<User> users) {
-//        this.users = users;
-//    }
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,11 +1,9 @@
 package service;
 
 import dao.GroupDAO;
-import dao.bck.ItemDAO;
 import dao.UserDAO;
 import entity.Group;
 import entity.Vacancy;
-import entity.bck.Item;
 import entity.User;
 import org.apache.log4j.Logger;
 
@@ -32,8 +30,7 @@ public class UserService {
     @EJB
     private UserDAO userDAO;
 
-    @EJB
-    private ItemDAO itemDAO;
+
 
     @EJB
     private GroupDAO groupDAO;
@@ -66,27 +63,6 @@ public class UserService {
         return false;
     }
 
-    public boolean buy(String card, String date, String secureCode, Map<Long, Integer> items) {
-        boolean success = true;
-        if (!pay(card, date, secureCode)) return false;
-        try {
-            for (Map.Entry<Long, Integer> entry : items.entrySet()) {
-                Item item = itemDAO.find(entry.getKey());
-                item.setCount(item.getCount() - entry.getValue());
-                itemDAO.update(item);
-            }
-            sentBroadcastMessage("User successfully bought " + items.size() + " items");
-        } catch (Exception e) {
-            LOG.error("fail to buy!");
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean pay(String card, String date, String secureCode) {
-        // TODO pay
-        return true;
-    }
 
 
     public String getGroupName(String login) {
@@ -122,7 +98,8 @@ public class UserService {
     public boolean addVacancy(String userId, Vacancy vacancy){
         try {
             User user = userDAO.find(userId);
-            Set<Vacancy> vacanciesToAdd = new HashSet<Vacancy>();
+            //Set<Vacancy> vacanciesToAdd = new HashSet<Vacancy>();
+            Set<Vacancy> vacanciesToAdd =user.getVacancies();
             vacanciesToAdd.add(vacancy);
             user.setVacancies(vacanciesToAdd);
             userDAO.merge(user);
