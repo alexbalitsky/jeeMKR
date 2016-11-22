@@ -4,13 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      >
+>
 <f:view>
     <h:outputLabel value="#{infoBean.message}"/>
 </f:view>
 
-<h:link value="To main page" outcome="login"/>
-<h:form>
-    <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
-</h:form>
+<h:link value="To main page" outcome="getCategory"/>
 </html>

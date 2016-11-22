@@ -1,6 +1,6 @@
 package dao;
 
-import entity.User;
+import entity.Company;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -10,9 +10,8 @@ import javax.ejb.Stateless;
  */
 @Stateless
 @Local
-public class UserDAO extends AbstractDAO<User>{
-    public UserDAO() {
-        super(User.class);
+public class CompanyDAO extends AbstractDAO<Company> {
+    public CompanyDAO(){
+        super(Company.class);
     }
-
 }

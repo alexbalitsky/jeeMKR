@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h:link value="Go to main page" outcome="getVacancy" />
+    <br/>
+    <h:outputText value="Title: #{vacancyBean.vacancy.title}"/>
+    <br/>
+    <h:outputText value="Publication date: #{vacancyBean.vacancy.date}"/>
+    <br/>
+    <h:outputText value="Salary: #{vacancyBean.vacancy.salary}"/>
+    <br/>
+    <h:outputText value="Requirement: #{vacancyBean.vacancy.requirement}"/>
+    <br/>
+    <h:outputText value="Position title #{vacancyBean.vacancy.position.name}"/>
+    <br/>
+    <h:outputText value="Position description #{vacancyBean.vacancy.position.description}"/>
+    <br/>
+    <h:outputText value="Company name #{vacancyBean.vacancy.company.name}"/>
+    <br/>
+    <h:outputText value="Company phone #{vacancyBean.vacancy.company.phone}"/>
+    <br/>
+    <h:outputText value="Company adress #{vacancyBean.vacancy.company.address}"/>
+    <br/>
+    <h:outputText value="Company email #{vacancyBean.vacancy.company.email}"/>
+    <br/>
+
+    <h:form>
+        <h:commandButton value="Send request" action="#{vacancyBean.sendRequest}"/>
+            <f:param name="vacancy_id_request" value="#{vacancyBean.vacancy.id}"/>
+    </h:form>
+
+
+    <h:form>
+        <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+    </h:form>
+
+</h:body>
+</html>

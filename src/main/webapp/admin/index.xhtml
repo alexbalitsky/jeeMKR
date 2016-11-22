@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:form>
+    <h:commandButton value="Add company" action="#{indexBean.addCompany}" />
+    <h:commandButton value="Add category" action="#{indexBean.addCategory}" />
+    <h:commandButton value="Add position" action="#{indexBean.addPosition}" />
+    <h:commandButton value="Add vacancy" action="#{indexBean.addVacancy}" />
+
+    <br/>
+    <br/>
+    <br/>
+
+    <h1>List of admin panel items</h1>
+    <h:commandButton value="Get categories" action="#{indexBean.getCategories}" />
+    <h:commandButton value="Get companies" action="#{indexBean.getCompanies}" />
+    <h:commandButton value="Get positions" action="#{indexBean.getPositions}" />
+    <h:commandButton value="Get vacancies" action="#{indexBean.getVacancies}" />
+
+    <br />
+    <br />
+    <h:commandLink value="Logout" action="#{authorizationBean.doLogout}" />
+
+</h:form>
+</html>

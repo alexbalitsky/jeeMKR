@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Add Vacancy</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> Title : </td>
+                <td> <h:inputText value="#{addVacancyBean.title}"/> </td>
+            </tr>
+            <tr>
+                <td> Date : </td>
+                <td> <h:inputText value="#{addVacancyBean.date}"/> </td>
+            </tr>
+            <tr>
+                <td> Salary : </td>
+                <td> <h:inputText value="#{addVacancyBean.salary}"/> </td>
+            </tr>
+            <tr>
+                <td> Requirement : </td>
+                <td> <h:inputText value="#{addVacancyBean.requirement}"/> </td>
+            </tr>
+
+        </table>
+
+        <br/>
+        <h3>Choose company</h3>
+        <h:selectOneListbox value="#{addVacancyBean.company}">
+            <f:selectItems value="#{addVacancyBean.companies}" var="company" itemLabel="#{company.name} | #{company.email} | #{company.address}" itemValue="#{company.id}"/>
+        </h:selectOneListbox>
+
+        <br/>
+        <h3>Choose Category</h3>
+        <h:selectOneListbox value="#{addVacancyBean.category}">
+            <f:selectItems value="#{addVacancyBean.categories}" var="category" itemLabel="#{category.title}" itemValue="#{category.id}"/>
+        </h:selectOneListbox>
+
+        <br/>
+        <h3>Choose position</h3>
+        <h:selectOneListbox value="#{addVacancyBean.position}">
+            <f:selectItems value="#{addVacancyBean.positions}" var="position" itemLabel="#{position.name} | #{position.description}" itemValue="#{position.id}"/>
+        </h:selectOneListbox>
+
+        <br />
+        <br />
+        <h:commandButton value="Save" action="#{addVacancyBean.save}"/>
+
+        <br />
+        <br />
+        <h:link value="Cancel" outcome="index" />
+    </h:form>
+</h:body>
+</html>

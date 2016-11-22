@@ -1,13 +1,12 @@
 package dao;
 
 import entity.Group;
-import entity.User;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 /**
- * Created by alex on 12.11.16.
+ * Created by ignatenko on 19.11.16.
  */
 @Stateless
 @Local

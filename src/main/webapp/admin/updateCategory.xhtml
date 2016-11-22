@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update category</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> title: </td>
+                <td> <h:inputText value="#{updateCategoryBean.title}"/> </td>
+            </tr>
+        </table>
+
+
+        <br />
+        <h:commandButton value="Update" action="#{updateCategoryBean.update}"/>
+
+        <h:link value="Cancel" outcome="getCategory" />
+    </h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <h1>Update position</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td> name: </td>
+                <td> <h:inputText value="#{updatePositionBean.name}"/> </td>
+            </tr>
+            <tr>
+                <td> description: </td>
+                <td> <h:inputText value="#{updatePositionBean.description}"/> </td>
+            </tr>
+        </table>
+
+
+        <br />
+        <h:commandButton value="Update" action="#{updatePositionBean.update}"/>
+
+        <h:link value="Cancel" outcome="getPosition" />
+    </h:form>
+
+</h:body>
+</html>
