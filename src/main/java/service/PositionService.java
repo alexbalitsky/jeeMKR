@@ -1,7 +1,9 @@
 package service;
 
 import dao.PositionDAO;
+import dao.VacancyDAO;
 import entity.Position;
+import entity.Vacancy;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -23,6 +25,9 @@ public class PositionService {
 
     @EJB
     private PositionDAO positionDAO;
+
+    @EJB
+    private VacancyDAO vacancyDAO;
 
 
     public boolean save(String name, String description){
@@ -58,7 +63,10 @@ public class PositionService {
     public boolean delete(String id){
         try {
             Position position = positionDAO.find(Long.valueOf(id));
+            Vacancy vacancy = position.getVacancy();
+            vacancy.setPosition(null);
             position.setVacancy(null);
+            vacancyDAO.merge(vacancy);
             positionDAO.delete(position);
             return true;
         }catch (NumberFormatException nfe){

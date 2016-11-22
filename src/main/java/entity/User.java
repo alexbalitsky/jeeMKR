@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by alex on 12.11.16.
+ * Created by ignatenko on 19.11.16.
  */
 @Entity
 @Table(name = "users")

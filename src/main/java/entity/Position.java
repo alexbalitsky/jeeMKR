@@ -21,7 +21,6 @@ public class Position {
     private String name;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, mappedBy="position")
-    @JoinColumn(name="vacancy_id")
     private Vacancy vacancy;
 
     public Position(String description, String name) {

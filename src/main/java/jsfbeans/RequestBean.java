@@ -52,8 +52,6 @@ public class RequestBean {
 
     public String send(){
         try {
-            //TODO check if this user has already send vacancy for it
-            //add to Table;
             if (!vacancyService.isVacancyhaveUser(vacancy, user)){
                 userService.addVacancy(userId, vacancy);
                 //send email
